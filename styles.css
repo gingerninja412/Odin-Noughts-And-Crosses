@@ -9,11 +9,29 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #588B8B;
+}
+
+.options-board {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+  width: 600px;
+  border: 2px solid red;
+  border-radius: 20px;
+  background-color: #E6AF2E;
 }
 
 .game {
   position: absolute;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #588B8B;
 }
