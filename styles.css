@@ -15,7 +15,7 @@
 }
 
 .options-board {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -24,14 +24,51 @@
   border: 2px solid red;
   border-radius: 20px;
   background-color: #E6AF2E;
+  gap: 50px
+}
+
+.mode {
+  background-color: #ACE4AA;
+  width: 200px;
+  height: 100px;
+  border-radius: 50px;
+  font-size: larger;
+  border: none;
+}
+
+.symbol {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  background-color: #ACE4AA;
+  border: none;
+  font-size: xx-large;
+  margin: 30px;
 }
 
 .game {
   position: absolute;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 100vh;
   width: 100vw;
   background-color: #588B8B;
+}
+
+.game-board {
+  width: 600px;
+  height: 600px;
+  border: 2px solid red;
+  display: grid;
+  gap: 5px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  background-color: black;
+  padding: 5px;
+}
+
+.tile {
+  background-color: white;
 }
