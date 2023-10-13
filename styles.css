@@ -15,13 +15,12 @@
 }
 
 .options-board {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 600px;
   width: 600px;
-  border: 2px solid red;
   border-radius: 20px;
   background-color: #E6AF2E;
   gap: 50px
@@ -36,6 +35,11 @@
   border: none;
 }
 
+.mode:hover {
+  background-color: #03440C;
+  color: white;
+}
+
 .symbol {
   width: 100px;
   height: 100px;
@@ -46,9 +50,13 @@
   margin: 30px;
 }
 
+#X {
+  background-color: #03440C;
+  color: white;
+}
 .game {
   position: absolute;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -61,13 +69,11 @@
 .game-board {
   width: 600px;
   height: 600px;
-  border: 2px solid red;
   display: grid;
   gap: 5px;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   background-color: black;
-  padding: 5px;
 }
 
 .tile {
@@ -81,4 +87,9 @@
   border: none;
   background-color: #E6AF2E;
   font-size: larger;
+}
+
+.back-button:hover {
+  background-color: #03440C;
+  color:white;
 }
