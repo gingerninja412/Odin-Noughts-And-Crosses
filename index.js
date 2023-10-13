@@ -48,6 +48,8 @@ var control = (function () {
   function resetGame () {
     options.css("display", "flex")
     game.css("display", "none")
+    gameBoard.empty()
+    tilesList = []
   }
 
   function changeMode () {
@@ -102,14 +104,22 @@ var control = (function () {
       this.element.text(singlePlayerSymbol) 
       this.value = singlePlayerSymbol
       computerTurn()
+      console.log(this.value)
     }
   }
 
   function computerTurn () {
     let potentialTile = tilesList[Math.floor(Math.random() * tilesList.length)]
-    while(potentialTile.value = '') {
+    while(potentialTile.value != '') {
       potentialTile = tilesList[Math.floor(Math.random() * tilesList.length)]
     }
     console.log(potentialTile)
+    if(singlePlayerSymbol == "X") {
+      potentialTile.element.text("O")
+      potentialTile.value = "O"
+    } else {
+      potentialTile.element.text("X")
+      potentialTile.value = "X"
+    }
   }
 })();
