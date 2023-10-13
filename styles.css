@@ -54,6 +54,7 @@
   background-color: #03440C;
   color: white;
 }
+
 .game {
   position: absolute;
   display: none;
@@ -78,6 +79,11 @@
 
 .tile {
   background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 8rem;
+  z-index: 2;
 }
 
 .back-button {
