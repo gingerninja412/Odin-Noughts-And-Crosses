@@ -55,6 +55,7 @@
   height: 100vh;
   width: 100vw;
   background-color: #588B8B;
+  gap: 20px;
 }
 
 .game-board {
@@ -71,4 +72,13 @@
 
 .tile {
   background-color: white;
+}
+
+.back-button {
+  height: 70px;
+  width: 100px;
+  border-radius: 35px;
+  border: none;
+  background-color: #E6AF2E;
+  font-size: larger;
 }
