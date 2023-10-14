@@ -36,6 +36,7 @@ var control = (function () {
   let singlePlayerSymbol = "X"
   let players = 1;
   let tilesList = []
+  let filledTiles = 0
 
   //game functions
 
@@ -50,6 +51,7 @@ var control = (function () {
     game.css("display", "none")
     gameBoard.empty()
     tilesList = []
+    filledTiles = 0
   }
 
   function changeMode () {
@@ -103,23 +105,75 @@ var control = (function () {
     if (players = 1) {
       this.element.text(singlePlayerSymbol) 
       this.value = singlePlayerSymbol
+      filledTiles++
+      checkForWin()
       computerTurn()
-      console.log(this.value)
+      checkForWin()
     }
   }
 
   function computerTurn () {
-    let potentialTile = tilesList[Math.floor(Math.random() * tilesList.length)]
-    while(potentialTile.value != '') {
-      potentialTile = tilesList[Math.floor(Math.random() * tilesList.length)]
-    }
-    console.log(potentialTile)
-    if(singlePlayerSymbol == "X") {
-      potentialTile.element.text("O")
-      potentialTile.value = "O"
-    } else {
-      potentialTile.element.text("X")
-      potentialTile.value = "X"
+    if(filledTiles < 9) {
+      let potentialTile = tilesList[Math.floor(Math.random() * tilesList.length)]
+      while(potentialTile.value != '') {
+        potentialTile = tilesList[Math.floor(Math.random() * tilesList.length)]
+      }
+      console.log(potentialTile)
+      if(singlePlayerSymbol == "X") {
+        potentialTile.element.text("O")
+        potentialTile.value = "O"
+      } else {
+        potentialTile.element.text("X")
+        potentialTile.value = "X"
+      }
+      filledTiles++
     }
   }
+
+  function checkForWin() {
+    if (players = 1) {
+      let computerSymbol = null
+      if(singlePlayerSymbol = "X") {
+        computerSymbol = "O"
+      } else {
+        computerSymbol = "X"
+      }
+      if (tilesList[0].value == singlePlayerSymbol && tilesList[1].value == singlePlayerSymbol && tilesList[2].value == singlePlayerSymbol) {
+        console.log("you won")
+      } else if (tilesList[3].value == singlePlayerSymbol && tilesList[4].value == singlePlayerSymbol && tilesList[5].value == singlePlayerSymbol) {
+        console.log("you won")
+      } else if (tilesList[6].value == singlePlayerSymbol && tilesList[7].value == singlePlayerSymbol && tilesList[8].value == singlePlayerSymbol) {
+        console.log("you won")
+      } else if (tilesList[0].value == singlePlayerSymbol && tilesList[3].value == singlePlayerSymbol && tilesList[6].value == singlePlayerSymbol) {
+        console.log("you won")
+      } else if (tilesList[1].value == singlePlayerSymbol && tilesList[4].value == singlePlayerSymbol && tilesList[7].value == singlePlayerSymbol) {
+        console.log("you won")
+      } else if (tilesList[2].value == singlePlayerSymbol && tilesList[5].value == singlePlayerSymbol && tilesList[8].value == singlePlayerSymbol) {
+        console.log("you won")
+      } else if (tilesList[0].value == singlePlayerSymbol && tilesList[4].value == singlePlayerSymbol && tilesList[8].value == singlePlayerSymbol) {
+        console.log("you won")
+      } else if (tilesList[2].value == singlePlayerSymbol && tilesList[4].value == singlePlayerSymbol && tilesList[6].value == singlePlayerSymbol) {
+        console.log("you won")
+      }
+      if (tilesList[0].value == computerSymbol && tilesList[1].value == computerSymbol && tilesList[2].value == computerSymbol) {
+        console.log("you lost")
+      } else if (tilesList[3].value == computerSymbol && tilesList[4].value == computerSymbol && tilesList[5].value == computerSymbol) {
+        console.log("you lost")
+      } else if (tilesList[6].value == computerSymbol && tilesList[7].value == computerSymbol && tilesList[8].value == computerSymbol) {
+        console.log("you lost")
+      } else if (tilesList[0].value == computerSymbol && tilesList[3].value == computerSymbol && tilesList[6].value == computerSymbol) {
+        console.log("you lost")
+      } else if (tilesList[1].value == computerSymbol && tilesList[4].value == computerSymbol && tilesList[7].value == computerSymbol) {
+        console.log("you lost")
+      } else if (tilesList[2].value == computerSymbol && tilesList[5].value == computerSymbol && tilesList[8].value == computerSymbol) {
+        console.log("you lost")
+      } else if (tilesList[0].value == computerSymbol && tilesList[4].value == computerSymbol && tilesList[8].value == computerSymbol) {
+        console.log("you lost")
+      } else if (tilesList[2].value == computerSymbol && tilesList[4].value == computerSymbol && tilesList[6].value == computerSymbol) {
+        console.log("you lost")
+      }
+    } 
+    
+  }  
+
 })();
