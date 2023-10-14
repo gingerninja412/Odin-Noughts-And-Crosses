@@ -18,6 +18,7 @@ var control = (function () {
     element: body.find("#O"),
     checked: false
   }
+  let instructions = body.find("#instructions")
 
   //event bindings
   startGame.on("click", runGame)
@@ -37,6 +38,7 @@ var control = (function () {
   let players = 1;
   let tilesList = []
   let filledTiles = 0
+  let gameEnded = false
 
   //game functions
 
@@ -52,6 +54,8 @@ var control = (function () {
     gameBoard.empty()
     tilesList = []
     filledTiles = 0
+    gameEnded = false
+    instructions.text("")
   }
 
   function changeMode () {
@@ -102,12 +106,14 @@ var control = (function () {
   }
 
   function turn () {
-    if (players = 1) {
+    if (players = 1 && gameEnded == false) {
       this.element.text(singlePlayerSymbol) 
       this.value = singlePlayerSymbol
       filledTiles++
       checkForWin()
-      computerTurn()
+      if(gameEnded == false) {
+        computerTurn()
+      }
       checkForWin()
     }
   }
@@ -123,54 +129,90 @@ var control = (function () {
         potentialTile.element.text("O")
         potentialTile.value = "O"
       } else {
+        console.log("the computerSymbol is O")
         potentialTile.element.text("X")
         potentialTile.value = "X"
       }
       filledTiles++
     }
+    console.log(singlePlayerSymbol)
   }
 
   function checkForWin() {
     if (players = 1) {
       let computerSymbol = null
-      if(singlePlayerSymbol = "X") {
+      if(singlePlayerSymbol == "X") {
         computerSymbol = "O"
       } else {
         computerSymbol = "X"
       }
       if (tilesList[0].value == singlePlayerSymbol && tilesList[1].value == singlePlayerSymbol && tilesList[2].value == singlePlayerSymbol) {
         console.log("you won")
+        gameEnded = true
+        instructions.text("you won, press back to reset")
       } else if (tilesList[3].value == singlePlayerSymbol && tilesList[4].value == singlePlayerSymbol && tilesList[5].value == singlePlayerSymbol) {
         console.log("you won")
+        gameEnded = true
+        instructions.text("you won, press back to reset")
       } else if (tilesList[6].value == singlePlayerSymbol && tilesList[7].value == singlePlayerSymbol && tilesList[8].value == singlePlayerSymbol) {
         console.log("you won")
+        gameEnded = true
+        instructions.text("you won, press back to reset")
       } else if (tilesList[0].value == singlePlayerSymbol && tilesList[3].value == singlePlayerSymbol && tilesList[6].value == singlePlayerSymbol) {
         console.log("you won")
+        gameEnded = true
+        instructions.text("you won, press back to reset")
       } else if (tilesList[1].value == singlePlayerSymbol && tilesList[4].value == singlePlayerSymbol && tilesList[7].value == singlePlayerSymbol) {
         console.log("you won")
+        gameEnded = true
+        instructions.text("you won, press back to reset")
       } else if (tilesList[2].value == singlePlayerSymbol && tilesList[5].value == singlePlayerSymbol && tilesList[8].value == singlePlayerSymbol) {
         console.log("you won")
+        gameEnded = true
+        instructions.text("you won, press back to reset")
       } else if (tilesList[0].value == singlePlayerSymbol && tilesList[4].value == singlePlayerSymbol && tilesList[8].value == singlePlayerSymbol) {
         console.log("you won")
+        gameEnded = true
+        instructions.text("you won, press back to reset")
       } else if (tilesList[2].value == singlePlayerSymbol && tilesList[4].value == singlePlayerSymbol && tilesList[6].value == singlePlayerSymbol) {
         console.log("you won")
-      }
-      if (tilesList[0].value == computerSymbol && tilesList[1].value == computerSymbol && tilesList[2].value == computerSymbol) {
+        gameEnded = true
+        instructions.text("you won, press back to reset")
+      } else if (tilesList[0].value == computerSymbol && tilesList[1].value == computerSymbol && tilesList[2].value == computerSymbol) {
         console.log("you lost")
+        gameEnded = true
+        instructions.text("you lost, press back to reset")
       } else if (tilesList[3].value == computerSymbol && tilesList[4].value == computerSymbol && tilesList[5].value == computerSymbol) {
         console.log("you lost")
+        gameEnded = true
+        instructions.text("you lost, press back to reset")
       } else if (tilesList[6].value == computerSymbol && tilesList[7].value == computerSymbol && tilesList[8].value == computerSymbol) {
         console.log("you lost")
+        gameEnded = true
+        instructions.text("you lost, press back to reset")
       } else if (tilesList[0].value == computerSymbol && tilesList[3].value == computerSymbol && tilesList[6].value == computerSymbol) {
         console.log("you lost")
+        gameEnded = true
+        instructions.text("you lost, press back to reset")
       } else if (tilesList[1].value == computerSymbol && tilesList[4].value == computerSymbol && tilesList[7].value == computerSymbol) {
         console.log("you lost")
+        gameEnded = true
+        instructions.text("you lost, press back to reset")
       } else if (tilesList[2].value == computerSymbol && tilesList[5].value == computerSymbol && tilesList[8].value == computerSymbol) {
         console.log("you lost")
+        gameEnded = true
+        instructions.text("you lost, press back to reset")
       } else if (tilesList[0].value == computerSymbol && tilesList[4].value == computerSymbol && tilesList[8].value == computerSymbol) {
         console.log("you lost")
+        gameEnded = true
+        instructions.text("you lost, press back to reset")
       } else if (tilesList[2].value == computerSymbol && tilesList[4].value == computerSymbol && tilesList[6].value == computerSymbol) {
         console.log("you lost")
+        gameEnded = true
+        instructions.text("you lost, press back to reset")
+      } else if(filledTiles == 9) {
+        gameEnded = true
+        instructions.text("draw, press back to reset")
       }
     } 
     
