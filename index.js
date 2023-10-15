@@ -39,6 +39,7 @@ var control = (function () {
   let tilesList = []
   let filledTiles = 0
   let gameEnded = false
+  let playerOneTurn = true
 
   //game functions
 
@@ -63,6 +64,7 @@ var control = (function () {
       gameMode.text("Two players")
       SymbolContainer.css("display", "none")
       players = 2
+      instructions.text("player one's turn")
     } else {
       gameMode.text("One Player")
       SymbolContainer.css("display", "block")
@@ -106,13 +108,30 @@ var control = (function () {
   }
 
   function turn () {
-    if (players = 1 && gameEnded == false) {
+    if (players == 1 && gameEnded == false && this.value == "") {
       this.element.text(singlePlayerSymbol) 
       this.value = singlePlayerSymbol
       filledTiles++
       checkForWin()
       if(gameEnded == false) {
+        console.log("this works")
+        console.log(players)
         computerTurn()
+      }
+      checkForWin()
+    } else if(players == 2 && gameEnded == false) {
+      if(playerOneTurn == true && this.value == "") {
+        this.element.text("X") 
+        this.value = "X"
+        playerOneTurn = false
+        filledTiles++
+        instructions.text("player two's turn")
+      } else if(playerOneTurn == false && this.value == ""){
+        this.element.text("O")
+        this.value = "O"
+        playerOneTurn = true
+        filledTiles++
+        instructions.text("player one's turn")
       }
       checkForWin()
     }
@@ -139,7 +158,7 @@ var control = (function () {
   }
 
   function checkForWin() {
-    if (players = 1) {
+    if (players == 1) {
       let computerSymbol = null
       if(singlePlayerSymbol == "X") {
         computerSymbol = "O"
@@ -214,7 +233,76 @@ var control = (function () {
         gameEnded = true
         instructions.text("draw, press back to reset")
       }
-    } 
+    } else if(players  == 2) {
+      if (tilesList[0].value == "X" && tilesList[1].value == "X" && tilesList[2].value == "X") {
+      
+        gameEnded = true
+        instructions.text("Player one won, press back to reset")
+      } else if (tilesList[3].value == "X" && tilesList[4].value == "X" && tilesList[5].value == "X") {
+      
+        gameEnded = true
+        instructions.text("Player one won, press back to reset")
+      } else if (tilesList[6].value == "X" && tilesList[7].value == "X" && tilesList[8].value == "X") {
+      
+        gameEnded = true
+        instructions.text("Player one won, press back to reset")
+      } else if (tilesList[0].value == "X" && tilesList[3].value == "X" && tilesList[6].value == "X") {
+      
+        gameEnded = true
+        instructions.text("Player one won, press back to reset")
+      } else if (tilesList[1].value == "X" && tilesList[4].value == "X" && tilesList[7].value == "X") {
+      
+        gameEnded = true
+        instructions.text("Player one won, press back to reset")
+      } else if (tilesList[2].value == "X" && tilesList[5].value == "X" && tilesList[8].value == "X") {
+      
+        gameEnded = true
+        instructions.text("Player one won, press back to reset")
+      } else if (tilesList[0].value == "X" && tilesList[4].value == "X" && tilesList[8].value == "X") {
+      
+        gameEnded = true
+        instructions.text("Player one won, press back to reset")
+      } else if (tilesList[2].value == "X" && tilesList[4].value == "X" && tilesList[6].value == "X") {
+      
+        gameEnded = true
+        instructions.text("Player one won, press back to reset")
+      } else if (tilesList[0].value == "O" && tilesList[1].value == "O" && tilesList[2].value == "O") {
+        
+        gameEnded = true
+        instructions.text("player two won, press back to reset")
+      } else if (tilesList[3].value == "O" && tilesList[4].value == "O" && tilesList[5].value == "O") {
+        
+        gameEnded = true
+        instructions.text("player two won, press back to reset")
+      } else if (tilesList[6].value == "O" && tilesList[7].value == "O" && tilesList[8].value == "O") {
+        
+        gameEnded = true
+        instructions.text("player two won, press back to reset")
+      } else if (tilesList[0].value == "O" && tilesList[3].value == "O" && tilesList[6].value == "O") {
+        
+        gameEnded = true
+        instructions.text("player two won, press back to reset")
+      } else if (tilesList[1].value == "O" && tilesList[4].value == "O" && tilesList[7].value == "O") {
+        
+        gameEnded = true
+        instructions.text("player two won, press back to reset")
+      } else if (tilesList[2].value == "O" && tilesList[5].value == "O" && tilesList[8].value == "O") {
+        
+        gameEnded = true
+        instructions.text("player two won, press back to reset")
+      } else if (tilesList[0].value == "O" && tilesList[4].value == "O" && tilesList[8].value == "O") {
+        
+        gameEnded = true
+        instructions.text("player two won, press back to reset")
+      } else if (tilesList[2].value == "O" && tilesList[4].value == "O" && tilesList[6].value == "O") {
+        
+        gameEnded = true
+        instructions.text("player two won, press back to reset")
+      } else if(filledTiles == 9) {
+        gameEnded = true
+        instructions.text("draw, press back to reset")
+      }
+    }
     
   }  
 
